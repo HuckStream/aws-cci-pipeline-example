@@ -1,0 +1,22 @@
+version: 2.1
+orbs:
+  pulumi: pulumi/pulumi@2.1.0
+jobs:
+  pulumi-update:
+    docker:
+      - image: circleci/node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - pulumi/login
+      - run:
+          command: |
+            npm install
+            npm run build
+      - pulumi/update:
+          stack: HuckStream/CircleCI-AWS-Pipeline/dev
+workflows:
+  pulumi:
+    jobs:
+      - pulumi-update
+
