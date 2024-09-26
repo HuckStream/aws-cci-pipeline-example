@@ -29,13 +29,11 @@ jobs:
 workflows:
   pulumi:
     jobs:
-      - pulumi-update-dev
-        filters:
-          branches:
-            only:
-              - dev
-      - pulumi-update-prod
+      - pulumi-update-dev:
           filters:
             branches:
-              only:
-                - main
+              only: dev
+      - pulumi-update-prod:
+          filters:
+            branches:
+              only: main
