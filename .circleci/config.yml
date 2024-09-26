@@ -12,7 +12,7 @@ jobs:
       - run:
           command: |
             npm install
-            npm run build
+            # npm run build
       - pulumi/update:
           stack: HuckStream/CircleCI-AWS-Pipeline/dev
 workflows:
