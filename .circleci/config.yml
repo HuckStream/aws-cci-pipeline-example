@@ -6,10 +6,6 @@ jobs:
     docker:
       - image: circleci/node
     working_directory: ~/repo
-    filters:
-      branches:
-        only:
-          - dev
     steps:
       - checkout
       - pulumi/login
@@ -23,10 +19,6 @@ jobs:
     docker:
       - image: circleci/node
     working_directory: ~/repo
-    filters:
-      branches:
-        only:
-          - main
     steps:
       - checkout
       - pulumi/login
@@ -40,4 +32,12 @@ workflows:
   pulumi:
     jobs:
       - pulumi-update-dev
+        filters:
+          branches:
+            only:
+              - dev
       - pulumi-update-prod
+          filters:
+            branches:
+              only:
+                - main
